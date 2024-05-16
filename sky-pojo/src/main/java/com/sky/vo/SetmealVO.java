@@ -17,10 +17,10 @@ import java.util.List;
 @AllArgsConstructor
 public class SetmealVO implements Serializable {
 
-    private Long id;
+    private String id;
 
     //分类id
-    private Long categoryId;
+    private String categoryId;
 
     //套餐名称
     private String name;

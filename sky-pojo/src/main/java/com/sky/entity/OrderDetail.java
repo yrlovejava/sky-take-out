@@ -19,19 +19,19 @@ public class OrderDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private String id;
 
     //名称
     private String name;
 
     //订单id
-    private Long orderId;
+    private String orderId;
 
     //菜品id
-    private Long dishId;
+    private String dishId;
 
     //套餐id
-    private Long setmealId;
+    private String setmealId;
 
     //口味
     private String dishFlavor;

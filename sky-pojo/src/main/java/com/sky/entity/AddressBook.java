@@ -18,10 +18,10 @@ public class AddressBook implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private String id;
 
     //用户id
-    private Long userId;
+    private String userId;
 
     //收货人
     private String consignee;

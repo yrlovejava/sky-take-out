@@ -19,10 +19,10 @@ public class Setmeal implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private String id;
 
     //分类id
-    private Long categoryId;
+    private String categoryId;
 
     //套餐名称
     private String name;
@@ -43,7 +43,7 @@ public class Setmeal implements Serializable {
 
     private LocalDateTime updateTime;
 
-    private Long createUser;
+    private String createUser;
 
-    private Long updateUser;
+    private String updateUser;
 }

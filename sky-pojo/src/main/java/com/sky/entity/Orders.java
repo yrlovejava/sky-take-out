@@ -37,7 +37,7 @@ public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private String id;
 
     //订单号
     private String number;
@@ -46,10 +46,10 @@ public class Orders implements Serializable {
     private Integer status;
 
     //下单用户id
-    private Long userId;
+    private String userId;
 
     //地址id
-    private Long addressBookId;
+    private String addressBookId;
 
     //下单时间
     private LocalDateTime orderTime;

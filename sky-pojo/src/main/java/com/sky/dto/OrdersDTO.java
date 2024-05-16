@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class OrdersDTO implements Serializable {
 
-    private Long id;
+    private String id;
 
     //订单号
     private String number;
@@ -19,10 +19,10 @@ public class OrdersDTO implements Serializable {
     private Integer status;
 
     //下单用户id
-    private Long userId;
+    private String userId;
 
     //地址id
-    private Long addressBookId;
+    private String addressBookId;
 
     //下单时间
     private LocalDateTime orderTime;

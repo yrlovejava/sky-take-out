@@ -20,6 +20,7 @@ public class JwtUtil {
      */
     public static String createJWT(String secretKey, long ttlMillis, Map<String, Object> claims) {
         // 指定签名的时候使用的签名算法，也就是header那部分
+        // HS256算法
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
         // 生成JWT的时间

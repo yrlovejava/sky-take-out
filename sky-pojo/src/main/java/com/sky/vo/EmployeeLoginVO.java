@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 @Data
-@Builder
+@Builder//开启建造者模式
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(description = "员工登录返回的数据格式")
 public class EmployeeLoginVO implements Serializable {
 
     @ApiModelProperty("主键值")
-    private Long id;
+    private String id;
 
     @ApiModelProperty("用户名")
     private String userName;

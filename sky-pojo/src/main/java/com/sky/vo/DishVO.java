@@ -17,11 +17,11 @@ import java.util.List;
 @AllArgsConstructor
 public class DishVO implements Serializable {
 
-    private Long id;
+    private String id;
     //菜品名称
     private String name;
     //菜品分类id
-    private Long categoryId;
+    private String categoryId;
     //菜品价格
     private BigDecimal price;
     //图片

@@ -6,8 +6,8 @@ import java.io.Serializable;
 @Data
 public class ShoppingCartDTO implements Serializable {
 
-    private Long dishId;
-    private Long setmealId;
+    private String dishId;
+    private String setmealId;
     private String dishFlavor;
 
 }
