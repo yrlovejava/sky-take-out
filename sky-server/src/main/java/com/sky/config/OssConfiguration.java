@@ -17,7 +17,7 @@ public class OssConfiguration {
 
     @Bean
     @ConditionalOnMissingBean // 保证只有这一个util对象,虽然spring，默认是单例模式，但是如果存在其他配置类，其他配置类中也创建了oss对象，那么容器中仍然会存在多个
-
+    //这里注入的时候已经有值了，因为在properties中已经使用注解给属性赋值了
     public AliOssUtil aliOssUtil(AliOssProperties aliOssProperties){
         log.info("开始创建阿里云文件上传工具类对象,{}",aliOssProperties);
         return new AliOssUtil(aliOssProperties.getEndpoint(),
