@@ -93,15 +93,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setId(UUIDUtil.getUUID());
         //设置账号状态(1 表示正常 0 表示锁定)
         employee.setStatus(StatusConstant.ENABLE);
+        //设置密码，新增员工默认是123456
+        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
+
+        //现在使用了AOP,所以可以手动赋值
+        /*//设置当前记录创建人id和修改人id
+        employee.setCreateUser(BaseContext.getCurrentId());
+        employee.setUpdateUser(BaseContext.getCurrentId());
         //设置创建时间
         employee.setCreateTime(LocalDateTime.now());
         //设置修改时间
-        employee.setUpdateTime(LocalDateTime.now());
-        //设置密码，新增员工默认是123456
-        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-        //设置当前记录创建人id和修改人id
-        employee.setCreateUser(BaseContext.getCurrentId());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+        employee.setUpdateTime(LocalDateTime.now());*/
 
         //调用service
         employeeMapper.insertUser(employee);
@@ -160,8 +162,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO,employee);
         //设置修改时间和修改人
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+        //现在使用了AOP，所有就可以不用手动设置
+        /*employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());*/
 
         return employeeMapper.updateEmployee(employee);
     }
@@ -187,8 +190,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         String newPassword = DigestUtils.md5DigestAsHex(passwordEditDTO.getNewPassword().getBytes());
         employee.setPassword(newPassword);
         employee.setId(passwordEditDTO.getEmpId());
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+        //现在使用了AOP来统一给公共字段赋值，所以这里不需要再手动赋值
+        /*employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());*/
 
         return employeeMapper.updateEmployee(employee);
     }
