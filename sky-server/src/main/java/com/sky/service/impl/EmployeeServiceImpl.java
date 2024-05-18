@@ -15,18 +15,23 @@ import com.sky.exception.AccountNotFoundException;
 import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
 import com.sky.result.PageResult;
+import com.sky.result.Result;
 import com.sky.service.EmployeeService;
 import com.sky.utils.UUIDUtil;
+import io.swagger.annotations.ApiOperation;
 import org.apache.poi.util.PackageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -71,6 +76,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+    /**
+     * 新增员工
+     * @param employeeDTO
+     */
     @Override
     public void save(EmployeeDTO employeeDTO) {
         //在持久层做业务最好是使用实体类
@@ -96,6 +105,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.insertUser(employee);
     }
 
+    /**
+     * 分页条件查询员工
+     * @param employeePageQueryDTO
+     * @return
+     */
     @Override
     public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
         //开始分页查询
@@ -109,4 +123,44 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new PageResult(total,records);
     }
 
+    /**
+     * 修改员工
+     * @param employee
+     */
+    @Override
+    public void startOrStop(Employee employee) {
+        //调用mapper修改信息
+        employeeMapper.updateEmployee(employee);
+    }
+
+    /**
+     * 根据id查询员工具体信息
+     * @param id
+     * @return
+     */
+    @Override
+    public Employee getDetailById(String id) {
+
+        Employee employee = employeeMapper.selectEmployeeDetailById(id);
+        //设置密码为******,防止密码泄露
+        employee.setPassword("******");
+
+        return employee;
+    }
+
+    /**
+     * 编辑员工信息
+     * @param employeeDTO
+     * @return
+     */
+    @Override
+    public int update(EmployeeDTO employeeDTO){
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+        //设置修改时间和修改人
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+
+        return employeeMapper.updateEmployee(employee);
+    }
 }

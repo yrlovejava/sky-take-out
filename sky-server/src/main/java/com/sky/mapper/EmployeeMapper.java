@@ -6,8 +6,10 @@ import com.sky.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface EmployeeMapper {
@@ -30,4 +32,9 @@ public interface EmployeeMapper {
      * @return
      */
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    int updateEmployee(Employee employee);
+
+    @Select("select id,name,username,password,phone,id_number from employee where id = #{id}")
+    Employee selectEmployeeDetailById(String id);
 }
