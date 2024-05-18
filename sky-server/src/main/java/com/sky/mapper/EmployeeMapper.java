@@ -1,7 +1,9 @@
 package com.sky.mapper;
 
 import com.github.pagehelper.Page;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeePageQueryDTO;
+import com.sky.dto.PasswordEditDTO;
 import com.sky.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -10,6 +12,7 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Mapper
 public interface EmployeeMapper {
@@ -37,4 +40,7 @@ public interface EmployeeMapper {
 
     @Select("select id,name,username,password,phone,id_number from employee where id = #{id}")
     Employee selectEmployeeDetailById(String id);
+
+    @Select("select password from employee where id = #{id}")
+    String selectEmployeePasswordById(String id);
 }
