@@ -51,5 +51,8 @@ public interface DishMapper {
     @Select("select * from dish where id = #{id}")
     Dish getById(String id);
 
+    @AutoFill(OperationType.UPDATE)
     Integer updateDish(Dish dish);
+
+    DishVO selectDishForDetailById(String id);
 }

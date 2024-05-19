@@ -21,4 +21,5 @@ public interface DishFlavorMapper {
     DishFlavor selectDishFlavorByDishId(String dishId);
 
     Integer deleteDishFlavorByDishIds(List<String> dishIds);
+
 }

@@ -56,7 +56,7 @@
                 d.image = #{image},
             </if>
             <if test="description != null">
-                d.description = #{description}
+                d.description = #{description},
             </if>
             <if test="status != null">
                 d.status = #{status}
@@ -65,4 +65,9 @@
         where d.id = #{id}
     </update>
 
+    <select id="selectDishForDetailById" resultMap="DishResultMap">
+        select d.id,d.name,d.category_id,d.price,d.image,d.description,d.status,d.update_time,c.name as categoryName from dish d
+        inner join category c on d.category_id = c.id
+        where d.id = #{id}
+    </select>
 </mapper>

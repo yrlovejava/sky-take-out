@@ -38,6 +38,11 @@ public class DishController {
         return Result.success();
     }
 
+    /**
+     * 根据条件分页查询菜品
+     * @param dishPageQueryDTO
+     * @return
+     */
     @GetMapping("/page")
     @ApiOperation("根据条件分页查询菜品")
     public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO){
@@ -46,6 +51,11 @@ public class DishController {
         return Result.success(pageResult);
     }
 
+    /**
+     * 删除菜品
+     * @param ids
+     * @return
+     */
     @DeleteMapping()
     @ApiOperation("删除菜品")
     public Result delete(@RequestParam List<String> ids){
@@ -69,6 +79,33 @@ public class DishController {
         dish.setId(id);
         dish.setStatus(status);
         dishService.startOrStop(dish);
+        return Result.success();
+    }
+
+    /**
+     * 根据id查询菜品详细信息
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询菜品详细信息")
+    public Result<DishVO> getDetailById(@PathVariable String id){
+        log.info("根据id查询菜品详细信息: {}",id);
+        DishVO dish = dishService.getDetailById(id);
+        return Result.success(dish);
+    }
+
+    /**
+     * 修改菜品
+     * @param dishDTO
+     * @return
+     */
+    @PutMapping()
+    @ApiOperation("修改菜品信息")
+    public Result update(@RequestBody DishDTO dishDTO){
+        log.info("修改菜品信息: {}",dishDTO);
+        //修改菜品信息，修改菜品味道信息
+        dishService.updateDishForDetail(dishDTO);
         return Result.success();
     }
 }
