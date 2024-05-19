@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.DishMapper">
+
+    <resultMap id="DishResultMap" type="com.sky.vo.DishVO">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="price" column="price"/>
+        <result property="image" column="image"/>
+        <result property="description" column="description"/>
+        <result property="status" column="status"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="categoryName" column="categoryName"/>
+        <collection property="flavors" ofType="com.sky.entity.DishFlavor" select="com.sky.mapper.DishFlavorMapper.selectDishFlavorByDishId" column="id"/>
+    </resultMap>
+
+    <select id="selectDishForPageByCondition" resultMap="DishResultMap">
+        select d.id,d.name,d.category_id,d.price,d.image,d.description,d.status,d.update_time,c.name as categoryName from dish d
+        inner join category c on d.category_id = c.id
+        <where>
+            <if test="name != null">
+                d.name like concat('%',#{name},'%')
+            </if>
+            <if test="categoryId != null">
+                and d.category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and d.status = status
+            </if>
+        </where>
+        order by d.create_time desc
+    </select>
+
+</mapper>

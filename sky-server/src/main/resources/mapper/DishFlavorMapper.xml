@@ -5,7 +5,7 @@
     <insert id="insertDishFlavorByList">
         insert into dish_flavor (id, dish_id, name, value) values
         <foreach collection="list" item="obj" separator=",">
-            (#{obj.id},#{obj.dish_id},#{obj.name},#{obj.value})
+            (#{obj.id},#{obj.dishId},#{obj.name},#{obj.value})
         </foreach>
     </insert>
 
