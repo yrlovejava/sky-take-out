@@ -100,4 +100,14 @@ public class DishServiceImpl implements DishService {
         //再删除菜品
         dishMapper.deleteDishByIds(ids);
     }
+
+    /**
+     * 启用或者禁用菜品
+     * @param dish
+     * @return
+     */
+    @Override
+    public Integer startOrStop(Dish dish) {
+        return dishMapper.updateDish(dish);
+    }
 }

@@ -50,4 +50,6 @@ public interface DishMapper {
 
     @Select("select * from dish where id = #{id}")
     Dish getById(String id);
+
+    Integer updateDish(Dish dish);
 }
