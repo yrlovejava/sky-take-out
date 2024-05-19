@@ -7,6 +7,7 @@ import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.dto.PasswordEditDTO;
 import com.sky.entity.Employee;
 import com.sky.enumeration.OperationType;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -31,7 +32,7 @@ public interface EmployeeMapper {
     @Insert("insert into employee " +
             "(id, name, username, password, phone, sex, id_number, status ,create_time, update_time, create_user, update_user) " +
             "values (#{id},#{name},#{username},#{password},#{phone},#{sex},#{idNumber},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser})")
-    int insertUser(Employee employee);
+    Integer insertUser(Employee employee);
 
     /**
      * 分页查询员工信息
@@ -40,7 +41,7 @@ public interface EmployeeMapper {
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 
     @AutoFill(OperationType.UPDATE)
-    int updateEmployee(Employee employee);
+    Integer updateEmployee(Employee employee);
 
     @Select("select id,name,username,password,phone,id_number from employee where id = #{id}")
     Employee selectEmployeeDetailById(String id);
