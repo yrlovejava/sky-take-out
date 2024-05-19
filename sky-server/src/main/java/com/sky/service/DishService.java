@@ -1,2 +1,13 @@
-package com.sky.service;public interface DishService {
+package com.sky.service;
+
+import com.sky.dto.DishDTO;
+
+public interface DishService {
+
+    /**
+     * 新增菜品和口味
+     * @param dishDTO
+     * @return
+     */
+    void saveWithFlavor(DishDTO dishDTO);
 }
