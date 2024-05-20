@@ -59,7 +59,13 @@
                 d.description = #{description},
             </if>
             <if test="status != null">
-                d.status = #{status}
+                d.status = #{status},
+            </if>
+            <if test="updateTime != null">
+                d.update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null">
+                d.update_user = #{updateUser}
             </if>
         </set>
         where d.id = #{id}
