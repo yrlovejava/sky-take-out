@@ -17,4 +17,35 @@
             </if>
         </where>
     </select>
+
+    <update id="update">
+        update setmeal s
+        <set>
+            <if test="name != null">
+                s.name = #{name},
+            </if>
+            <if test="price != null">
+                s.price = #{price},
+            </if>
+            <if test="categoryId != null">
+                s.category_id = #{categoryId},
+            </if>
+            <if test="image != null">
+                s.image = #{image},
+            </if>
+            <if test="description != null">
+                s.description = #{description},
+            </if>
+            <if test="status != null">
+                s.status = #{status},
+            </if>
+            <if test="updateTime != null">
+                s.update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null">
+                s.update_user = #{updateUser}
+            </if>
+        </set>
+        where s.id = #{id}
+    </update>
 </mapper>
