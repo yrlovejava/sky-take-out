@@ -70,4 +70,16 @@
         inner join category c on d.category_id = c.id
         where d.id = #{id}
     </select>
+
+    <select id="selectDishForListByCondition" resultType="com.sky.entity.Dish">
+        select * from dish d
+        <where>
+            <if test="categoryId != null">
+                d.category_id = #{categoryId}
+            </if>
+            <if test="name != null">
+                and d.name like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
 </mapper>

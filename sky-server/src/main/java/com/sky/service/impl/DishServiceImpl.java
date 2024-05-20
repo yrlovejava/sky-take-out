@@ -153,4 +153,9 @@ public class DishServiceImpl implements DishService {
         });
         dishFlavorMapper.insertDishFlavorByList(flavors);
     }
+
+    @Override
+    public List<Dish> getDishListByCondition(DishDTO dishDTO) {
+        return dishMapper.selectDishForListByCondition(dishDTO);
+    }
 }

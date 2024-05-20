@@ -108,4 +108,19 @@ public class DishController {
         dishService.updateDishForDetail(dishDTO);
         return Result.success();
     }
+
+    /**
+     * 根据分类或者名字查询菜品
+     * @param dishDTO
+     * @return
+     */
+    @GetMapping("/list")
+    @ApiOperation("根据分类或者名字查询菜品")
+    public Result<List<Dish>> list(DishDTO dishDTO){
+        log.info("根据分类或者名字查询菜品: {}",dishDTO);
+        List<Dish> dishList = dishService.getDishListByCondition(dishDTO);
+        return Result.success(dishList);
+    }
+
+
 }
