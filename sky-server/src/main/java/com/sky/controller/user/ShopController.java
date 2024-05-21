@@ -30,7 +30,7 @@ public class ShopController {
         Integer status = (Integer) valueOperations.get(RedisConstant.REDIS_SHOP_STATUS_KEY);
         log.info("查询店铺营业状态: {}",status);
 
-        return Result.success();
+        return Result.success(status);
     }
 
 
