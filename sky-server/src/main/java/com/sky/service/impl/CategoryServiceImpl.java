@@ -14,6 +14,7 @@ import com.sky.mapper.DishMapper;
 import com.sky.mapper.SetmealMapper;
 import com.sky.result.PageResult;
 import com.sky.service.CategoryService;
+import com.sky.utils.UUIDUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         //设置创建时间、修改时间、创建人、修改人
         //现在使用了AOP来统一给公共字段赋值，所以这里不需要再手动赋值
+        category.setId(UUIDUtil.getUUID());
        /* category.setCreateTime(LocalDateTime.now());
         category.setUpdateTime(LocalDateTime.now());
         category.setCreateUser(BaseContext.getCurrentId());
