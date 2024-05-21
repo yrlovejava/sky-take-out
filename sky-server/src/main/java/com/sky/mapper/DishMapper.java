@@ -74,10 +74,10 @@ public interface DishMapper {
 
     /**
      * 根据分类id查询所有的菜品
-     * @param dishDTO
+     * @param dish
      * @return
      */
-    List<Dish> selectDishForListByCondition(DishDTO dishDTO);
+    List<Dish> selectDishForListByCondition(Dish dish);
 
     /**
      * 根据套餐id获取菜品

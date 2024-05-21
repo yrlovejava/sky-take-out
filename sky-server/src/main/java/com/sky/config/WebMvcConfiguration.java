@@ -48,7 +48,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .addPathPatterns("/user/**")
                 .excludePathPatterns("/user/user/login")// 放行登录请求
                 .excludePathPatterns("/user/shop/status");// 放行查询店铺营业状态请求
-    }
+     }
 
     /**
      * 通过knife4j生成管理端接口文档

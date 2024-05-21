@@ -52,5 +52,17 @@ public interface DishService {
      */
     void updateDishForDetail(DishDTO dishDTO);
 
+    /**
+     * 根据条件查询菜品
+     * @param dishDTO
+     * @return
+     */
     List<Dish> getDishListByCondition(DishDTO dishDTO);
+
+    /**
+     * 条件查询菜品和口味
+     * @param dish
+     * @return
+     */
+    List<DishVO> listWithFlavor(Dish dish);
 }

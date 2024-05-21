@@ -34,6 +34,8 @@ public class DishServiceImpl implements DishService {
     private DishFlavorMapper dishFlavorMapper;
     @Autowired
     private SetmealDishMapper setmealDishMapper;
+
+
     /**
      * 新增菜品和口味
      * @param dishDTO
@@ -156,6 +158,34 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List<Dish> getDishListByCondition(DishDTO dishDTO) {
-        return dishMapper.selectDishForListByCondition(dishDTO);
+        //封装dish
+        Dish dish = new Dish();
+        BeanUtils.copyProperties(dishDTO,dish);
+        return dishMapper.selectDishForListByCondition(dish);
+    }
+
+    /**
+     * 条件查询菜品和口味
+     * @param dish
+     * @return
+     */
+    public List<DishVO> listWithFlavor(Dish dish) {
+        //封装dish
+        List<Dish> dishList = dishMapper.selectDishForListByCondition(dish);
+
+        List<DishVO> dishVOList = new ArrayList<>();
+
+        for (Dish d : dishList) {
+            DishVO dishVO = new DishVO();
+            BeanUtils.copyProperties(d,dishVO);
+
+            //根据菜品id查询对应的口味
+            List<DishFlavor> flavors = dishFlavorMapper.selectDishFlavorByDishId(d.getId());
+
+            dishVO.setFlavors(flavors);
+            dishVOList.add(dishVO);
+        }
+
+        return dishVOList;
     }
 }
