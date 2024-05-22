@@ -12,9 +12,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/admin/dish")
@@ -24,6 +26,8 @@ public class DishController {
 
     @Autowired
     private DishService dishService;
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;
 
     /**
      *
@@ -35,6 +39,8 @@ public class DishController {
     public Result save(@RequestBody DishDTO dishDTO){
         log.info("新增菜品: {}",dishDTO);
         dishService.saveWithFlavor(dishDTO);
+        //新增菜品按理说是应该清理缓存的，但是新增菜品默认是停售状态，所以不会影响微信小程序中的显示
+        //所以这里可以不用清理缓存
         return Result.success();
     }
 
@@ -61,6 +67,10 @@ public class DishController {
     public Result delete(@RequestParam List<String> ids){
         log.info("删除菜品: {}",ids);
         dishService.deleteDishByIds(ids);
+
+        //删除菜品，有可能会删除多个菜品，所以就直接删除所有的缓存
+        cleanCache("dish_*");
+
         return Result.success();
     }
 
@@ -79,6 +89,11 @@ public class DishController {
         dish.setId(id);
         dish.setStatus(status);
         dishService.startOrStop(dish);
+
+        //启用或者停售菜品可能会牵扯到一个或多个分类缓存的修改
+        //所以直接删除所有的缓存
+        cleanCache("dish_*");
+
         return Result.success();
     }
 
@@ -106,6 +121,10 @@ public class DishController {
         log.info("修改菜品信息: {}",dishDTO);
         //修改菜品信息，修改菜品味道信息
         dishService.updateDishForDetail(dishDTO);
+
+        //只需要删除跟这个菜品分类有关的缓存就可以
+        cleanCache("dish_" + dishDTO.getCategoryId());
+
         return Result.success();
     }
 
@@ -122,5 +141,17 @@ public class DishController {
         return Result.success(dishList);
     }
 
+    /**
+     * 清理缓存数据
+     * @param pattern
+     */
+    private void cleanCache(String pattern){
+        //因为新增菜品,修改菜品,删除菜品时是直接对数据库中进行操作，缓存中的数据没有改变，所以这些操作需要清理缓存
+        Set<String> keys = redisTemplate.keys(pattern);
+        if(keys == null){
+            return;
+        }
+        redisTemplate.delete(keys);
+    }
 
 }

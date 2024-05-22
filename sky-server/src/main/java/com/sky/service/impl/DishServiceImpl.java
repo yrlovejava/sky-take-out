@@ -170,12 +170,13 @@ public class DishServiceImpl implements DishService {
      * @return
      */
     public List<DishVO> listWithFlavor(Dish dish) {
-        //封装dish
+        //根据条件查询所有菜品
         List<Dish> dishList = dishMapper.selectDishForListByCondition(dish);
 
         List<DishVO> dishVOList = new ArrayList<>();
 
         for (Dish d : dishList) {
+            //封装dishVO
             DishVO dishVO = new DishVO();
             BeanUtils.copyProperties(d,dishVO);
 
