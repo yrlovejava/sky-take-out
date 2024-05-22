@@ -48,8 +48,8 @@ public class DishServiceImpl implements DishService {
         Dish dish = new Dish();
         BeanUtils.copyProperties(dishDTO,dish);
         dish.setId(UUIDUtil.getUUID());
-        //默认是起售
-        dish.setStatus(StatusConstant.ENABLE);
+        //默认是停售
+        dish.setStatus(StatusConstant.DISABLE);
 
         //将菜品信息存入到菜品表中
         dishMapper.insertDish(dish);
