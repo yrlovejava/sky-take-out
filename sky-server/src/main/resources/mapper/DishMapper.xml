@@ -86,6 +86,9 @@
             <if test="name != null">
                 and d.name like concat('%',#{name},'%')
             </if>
+            <if test="status != null">
+                and d.status = #{status}
+            </if>
         </where>
     </select>
 </mapper>
