@@ -37,7 +37,7 @@ public interface DishService {
      * @param dish
      * @return
      */
-    Integer startOrStop(Dish dish);
+    void startOrStop(Dish dish);
 
     /**
      * 根据id查询详细信息

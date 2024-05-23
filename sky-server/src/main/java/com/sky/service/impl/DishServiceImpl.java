@@ -12,6 +12,7 @@ import com.sky.exception.DeletionNotAllowedException;
 import com.sky.mapper.DishFlavorMapper;
 import com.sky.mapper.DishMapper;
 import com.sky.mapper.SetmealDishMapper;
+import com.sky.mapper.SetmealMapper;
 import com.sky.result.PageResult;
 import com.sky.service.DishService;
 import com.sky.utils.UUIDUtil;
@@ -34,6 +35,8 @@ public class DishServiceImpl implements DishService {
     private DishFlavorMapper dishFlavorMapper;
     @Autowired
     private SetmealDishMapper setmealDishMapper;
+    @Autowired
+    private SetmealMapper setmealMapper;
 
 
     /**
@@ -110,8 +113,23 @@ public class DishServiceImpl implements DishService {
      * @return
      */
     @Override
-    public Integer startOrStop(Dish dish) {
-        return dishMapper.updateDish(dish);
+    @Transactional(rollbackFor = Exception.class)
+    public void startOrStop(Dish dish) {
+        //判断是启用菜品还是禁用菜品
+        if(dish.getStatus().equals(StatusConstant.DISABLE)){
+            //如果是禁用
+            //先查询这个菜品是否在套餐中
+            List<String> dishIds = new ArrayList<>();
+            dishIds.add(dish.getId());
+            List<String> setmealIds = setmealDishMapper.getSetmealIdsByDishIds(dishIds);
+            //禁用套餐
+            if(setmealIds != null){
+                setmealMapper.updateSetmealStatusStopByIds(setmealIds);
+            }
+        }
+
+        //禁用菜品
+        dishMapper.updateDish(dish);
     }
 
     /**

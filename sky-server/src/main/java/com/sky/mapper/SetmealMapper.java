@@ -83,4 +83,6 @@ public interface SetmealMapper {
             "left join dish d on sd.dish_id = d.id " +
             "where sd.setmeal_id = #{setmealId}")
     List<DishItemVO> getDishItemBySetmealId(String setmealId);
+
+    Integer updateSetmealStatusStopByIds(List<String> ids);
 }
