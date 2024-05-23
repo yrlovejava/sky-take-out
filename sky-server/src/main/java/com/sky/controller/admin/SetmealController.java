@@ -11,7 +11,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin/setmeal")
@@ -27,6 +30,7 @@ public class SetmealController {
     public Result save(@RequestBody SetmealDTO setmealDTO){
         log.info("新增套餐: {}",setmealDTO);
         setmealService.save(setmealDTO);
+        //新增操作本来也需要清除缓存，但是我们新增套餐时，设置默认状态为停售，所以不影响前端页面的相应，所以只需在启用和停售的controller中清除缓存就可以了
         return Result.success();
     }
 
@@ -50,8 +54,10 @@ public class SetmealController {
      */
     @PostMapping("/status/{status}")
     @ApiOperation("启用或停售套餐")
+    //因为这里只有套餐的id，但是我们的缓存是根据categoryId来作为key的，所以为了方便，直接清除所有缓存
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public Result startOrStop(@PathVariable Integer status,String id){
-        log.info("启用和停售套餐: {}",status);
+        log.info("启用和停售套餐: {},{}",status == 1 ? "启用" : "停售",id);
         setmealService.startOrStop(status,id);
         return Result.success();
     }
@@ -77,9 +83,21 @@ public class SetmealController {
      */
     @PutMapping
     @ApiOperation("修改套餐")
+    //因为可能涉及套餐的变换，不好判断是否只涉及一个套餐的缓存，所以直接全部清理
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public Result update(@RequestBody SetmealDTO setmealDTO) {
         log.info("修改套餐: {}",setmealDTO);
         setmealService.update(setmealDTO);
+        return Result.success();
+    }
+
+    @DeleteMapping()
+    @ApiOperation("批量删除套餐")
+    //直接清除所有缓存数据
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
+    public Result delete(@RequestParam List<String> ids) {
+        log.info("批量删除套餐: {}",ids);
+        setmealService.deleteBatch(ids);
         return Result.success();
     }
 }
