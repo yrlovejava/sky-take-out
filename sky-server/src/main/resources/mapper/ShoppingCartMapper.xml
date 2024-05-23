@@ -20,4 +20,21 @@
         </where>
     </select>
 
+    <delete id="deleteShoppingCartByCondition">
+        delete from shopping_cart
+        <where>
+            <if test="dishId != null">
+                dish_id = #{dishId}
+            </if>
+            <if test="setmealId != null">
+                setmeal_id = #{setmealId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="dishFlavor != null">
+                and dish_flavor = #{dishFlavor}
+            </if>
+        </where>
+    </delete>
 </mapper>

@@ -32,4 +32,6 @@ public interface ShoppingCartMapper {
 
     @Delete("delete from shopping_cart where user_id = #{userId}")
     Integer deleteAllByUserId(String userId);
+
+    Integer deleteShoppingCartByCondition(ShoppingCart shoppingCart);
 }
