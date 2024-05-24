@@ -18,4 +18,7 @@ public interface UserMapper {
 
     @Insert("insert into user (id,openid,create_time) values (#{id},#{openid},#{createTime})")
     Integer insertUser(User user);
+
+    @Select("select * from user where id = #{id}")
+    User getUserById(String id);
 }
