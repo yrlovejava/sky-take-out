@@ -124,7 +124,7 @@ public class OrderController {
     @ApiOperation("完成订单")
     public Result complete(@PathVariable String id){
         log.info("完成订单");
-
+        orderService.complete(id);
         return Result.success();
     }
 }
