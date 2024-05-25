@@ -77,4 +77,18 @@ public interface OrderService {
      * @param id
      */
     void complete(String id);
+
+    PageResult pageForUser(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    /**
+     * 再来一单
+     * @param id
+     */
+    void repetition(String id);
+
+    /**
+     * 用户取消订单
+     * @param id
+     */
+    void userCancel(String id);
 }

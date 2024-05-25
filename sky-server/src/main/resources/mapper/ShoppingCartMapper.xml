@@ -37,4 +37,13 @@
             </if>
         </where>
     </delete>
+
+    <insert id="insertShoppingCartByList">
+        insert into shopping_cart (id, name, image, user_id, dish_id, setmeal_id, dish_flavor, number, amount, create_time) values
+        <foreach collection="list" item="obj" separator=",">
+            (#{obj.id},#{obj.name},#{obj.image},#{obj.userId},#{obj.dishId},#{obj.setmealId},#{obj.dishFlavor},#{obj.number},#{obj.amount},#{obj.createTime})
+        </foreach>
+    </insert>
+
+
 </mapper>

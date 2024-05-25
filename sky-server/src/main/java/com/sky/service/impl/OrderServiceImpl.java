@@ -423,4 +423,101 @@ public class OrderServiceImpl implements OrderService {
         //调用mapper修改
         orderMapper.update(orders);
     }
+
+    /**
+     * 查询历史订单(用户端)
+     * @param ordersPageQueryDTO
+     * @return
+     */
+    @Override
+    public PageResult pageForUser(OrdersPageQueryDTO ordersPageQueryDTO) {
+        ordersPageQueryDTO.setUserId(BaseContext.getCurrentId());
+        PageHelper.startPage(ordersPageQueryDTO.getPage(),ordersPageQueryDTO.getPageSize());
+        Page<Orders> page = orderMapper.selectOrdersForPageByCondition(ordersPageQueryDTO);
+
+        List<OrderVO> list = new ArrayList();
+
+        // 查询出订单明细，并封装入OrderVO进行响应
+        if (page != null && page.getTotal() > 0) {
+            for (Orders orders : page) {
+                String orderId = orders.getId();// 订单id
+
+                // 查询订单明细
+                List<OrderDetail> orderDetails = orderDetailMapper.selectByOrderId(orderId);
+
+                OrderVO orderVO = new OrderVO();
+                BeanUtils.copyProperties(orders, orderVO);
+                orderVO.setOrderDetailList(orderDetails);
+
+                list.add(orderVO);
+            }
+        }
+        return new PageResult(page.getTotal(), list);
+    }
+
+    /**
+     * 再来一单
+     * @param id
+     */
+    @Override
+    public void repetition(String id) {
+        //根据id查询订单
+        Orders orders = orderMapper.selectById(id);
+        //根据订单id查找订单中菜品
+        List<OrderDetail> orderDetailList = orderDetailMapper.selectByOrderId(orders.getId());
+
+        //封装购物车
+        List<ShoppingCart> shoppingCartList = new ArrayList<>();
+        ShoppingCart cart;
+        for (OrderDetail orderDetail : orderDetailList) {
+            cart = new ShoppingCart();
+            BeanUtils.copyProperties(orderDetail,cart);
+            cart.setUserId(BaseContext.getCurrentId());
+            cart.setId(UUIDUtil.getUUID());
+            cart.setCreateTime(LocalDateTime.now());
+
+            shoppingCartList.add(cart);
+        }
+
+        //将这些菜品重新放入购物车中(批量插入)
+        shoppingCartMapper.insertShoppingCartByList(shoppingCartList);
+    }
+
+    /**
+     * 用户取消订单
+     * @param id
+     */
+    @Override
+    public void userCancel(String id) {
+        //根据id查询订单
+        Orders orders = orderMapper.selectById(id);
+
+        //处理业务异常
+        if(orders == null){
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        }
+        if(orders.getStatus() > Orders.TO_BE_CONFIRMED){
+            throw new OrderBusinessException(MessageConstant.ORDER_STATUS_ERROR);
+        }
+
+        //如果已经支付了，处于待接单的情况下是就需要退款
+        if(orders.getStatus().equals(Orders.TO_BE_CONFIRMED)){
+            /*//调用微信支付退款接口
+            weChatPayUtil.refund(
+                    ordersDB.getNumber(), //商户订单号
+                    ordersDB.getNumber(), //商户退款单号
+                    new BigDecimal(0.01),//退款金额，单位 元
+                    new BigDecimal(0.01));//原订单金额*/
+            //支付状态修改为 退款
+            orders.setPayStatus(Orders.REFUND);
+        }
+
+        //封装实体类
+        orders.setStatus(Orders.CANCELLED);
+        orders.setCancelTime(LocalDateTime.now());
+        orders.setCancelReason("用户取消");
+
+        //调用mapper
+        orderMapper.update(orders);
+    }
 }
