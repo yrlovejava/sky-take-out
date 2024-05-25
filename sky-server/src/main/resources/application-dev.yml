@@ -26,3 +26,5 @@ sky:
     we-chat-pay-cert-file-path:
     notify-url: https://51125741.r18.cpolar.top/notify/paySuccess
     refund-notify-url: https://51125741.r18.cpolar.top/notify/paySuccess
+  shop:
+    address: 四川省成都市成华区建设北路二段四号
