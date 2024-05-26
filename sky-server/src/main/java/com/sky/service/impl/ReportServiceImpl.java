@@ -2,6 +2,7 @@ package com.sky.service.impl;
 
 import com.sky.entity.Orders;
 import com.sky.mapper.OrderMapper;
+import com.sky.mapper.UserMapper;
 import com.sky.service.ReportService;
 import com.sky.vo.TurnoverReportVO;
 import com.sky.vo.UserReportVO;
@@ -21,6 +22,8 @@ public class ReportServiceImpl implements ReportService {
 
     @Autowired
     private OrderMapper orderMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 营业额统计
@@ -103,9 +106,9 @@ public class ReportServiceImpl implements ReportService {
 
             Map<String,Object> map = new HashMap<>();
             map.put("endTime",endTime);
-            Integer total = orderMapper.selectUserCountByMap(map);
+            Integer total = userMapper.selectUserCountByMap(map);
             map.put("beginTime",beginTime);
-            Integer newCount = orderMapper.selectUserCountByMap(map);
+            Integer newCount = userMapper.selectUserCountByMap(map);
 
             totalUserList.add(total);
             newUserList.add(newCount);
