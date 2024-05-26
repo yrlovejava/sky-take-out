@@ -59,7 +59,6 @@ public class OrderController {
     public Result<PageResult> pageSearch(OrdersPageQueryDTO ordersPageQueryDTO){
         log.info("订单搜索: {}",ordersPageQueryDTO);
         PageResult page = orderService.page(ordersPageQueryDTO);
-        System.out.println(page);
         return Result.success(page);
     }
 
