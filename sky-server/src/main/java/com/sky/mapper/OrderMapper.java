@@ -7,6 +7,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Mapper
 public interface OrderMapper {
 
@@ -48,6 +51,17 @@ public interface OrderMapper {
      */
     Page<Orders> selectOrdersForPageByCondition(OrdersPageQueryDTO ordersPageQueryDTO);
 
+    /**
+     * 根据id查询订单
+     */
     @Select("select * from orders where id = #{id}")
     Orders selectById(String id);
+
+    /**
+     * 根据状态和指定时间来查询订单
+     * @return
+     */
+    @Select("select * from orders where status = #{status} and order_time < #{time}")
+    List<Orders> selectOrderByStatusAndTime(Integer status, LocalDateTime time);
+
 }
