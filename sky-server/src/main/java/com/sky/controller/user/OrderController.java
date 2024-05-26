@@ -115,7 +115,7 @@ public class OrderController {
     @ApiOperation("用户催单")
     public Result reminder(@PathVariable String id){
         log.info("用户催单: {}",id);
-
+        orderService.reminder(id);
         return Result.success();
     }
 }
