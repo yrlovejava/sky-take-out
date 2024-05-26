@@ -71,4 +71,11 @@ public interface OrderMapper {
      */
     Double selectOneDayAmountByMap(Map<String,Object> map);
 
+    /**
+     * 根据条件查询用户数量
+     * @param map
+     * @return
+     */
+    Integer selectUserCountByMap(Map<String,Object> map);
+
 }
