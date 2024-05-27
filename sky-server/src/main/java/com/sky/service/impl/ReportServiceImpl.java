@@ -1,13 +1,11 @@
 package com.sky.service.impl;
 
+import com.sky.dto.GoodsSalesDTO;
 import com.sky.entity.Orders;
 import com.sky.mapper.OrderMapper;
 import com.sky.mapper.UserMapper;
 import com.sky.service.ReportService;
-import com.sky.vo.OrderReportVO;
-import com.sky.vo.OrderStatisticsVO;
-import com.sky.vo.TurnoverReportVO;
-import com.sky.vo.UserReportVO;
+import com.sky.vo.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.StreamUtils;
@@ -18,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ReportServiceImpl implements ReportService {
@@ -155,13 +154,8 @@ public class ReportServiceImpl implements ReportService {
             validOrderCountList.add(validCount);
         }
         //订单总数
-        Map<String,Object> map = new HashMap<>();
-        map.put("endTime",LocalDateTime.of(dateList.get(dateList.size() - 1), LocalTime.MAX));
-        Integer total = orderMapper.selectOrderCountByMap(map);
-        total = total == null ? 0 : total;
-        map.put("status",Orders.COMPLETED);
-        Integer validTotal = orderMapper.selectOrderCountByMap(map);
-        validTotal = validTotal == null ? 0 : validTotal;
+        Integer total = orderCountList.stream().reduce(Integer::sum).get();
+        Integer validTotal = validOrderCountList.stream().reduce(Integer::sum).get();
 
         //计算完成率
         Double rate = total == 0 ? 0.00 : Double.valueOf(validTotal) / Double.valueOf(total);
@@ -176,5 +170,33 @@ public class ReportServiceImpl implements ReportService {
                 .orderCompletionRate(rate)
                 .build();
     }
+
+    /**
+     * 销量前10的商品统计
+     * @param begin
+     * @param end
+     * @return
+     */
+    @Override
+    public SalesTop10ReportVO top10(LocalDate begin, LocalDate end) {
+        LocalDateTime beginTime = LocalDateTime.of(begin, LocalTime.MIN);
+        LocalDateTime endTime = LocalDateTime.of(end, LocalTime.MIN);
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("beginTime",beginTime);
+        map.put("endTime",endTime);
+        map.put("status",Orders.COMPLETED);
+        //调用mapper查询top10
+        List<GoodsSalesDTO> salesTop10 = orderMapper.selectTop10ByMap(map);
+
+        //封装返回vo
+        List<String> nameList = salesTop10.stream().map(GoodsSalesDTO::getName).collect(Collectors.toList());
+        List<Integer> numberList = salesTop10.stream().map(GoodsSalesDTO::getNumber).collect(Collectors.toList());
+        return SalesTop10ReportVO.builder()
+                .nameList(StringUtils.join(nameList,","))
+                .numberList(StringUtils.join(numberList,","))
+                .build();
+    }
+
 
 }

@@ -88,4 +88,23 @@
         </where>
     </select>
 
+    <select id="selectTop10ByMap" resultType="com.sky.dto.GoodsSalesDTO">
+        select od.name,sum(od.number) as number from order_detail od
+        inner join orders o on od.order_id = o.id
+        <where>
+            <if test="beginTime != null">
+                and o.order_time &gt; #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and o.order_time &lt; #{endTime}
+            </if>
+            <if test="status != null">
+                and o.status = #{status}
+            </if>
+        </where>
+        group by od.name
+        order by number desc
+        limit 0,10
+    </select>
+
 </mapper>
