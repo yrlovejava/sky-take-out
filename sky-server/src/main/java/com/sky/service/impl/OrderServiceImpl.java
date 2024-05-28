@@ -64,9 +64,9 @@ public class OrderServiceImpl implements OrderService {
 
     //百度地图api必须参数
     @Value("${sky.shop.address}")
-    private static String SHOP_ADDRESS;
+    private String SHOP_ADDRESS;
     @Value("${sky.shop.ak}")
-    private static String AK;
+    private String AK;
 
     /**
      * 用户下单
@@ -155,12 +155,14 @@ public class OrderServiceImpl implements OrderService {
         Map<String,String> map = new HashMap<>();
         map.put("address",SHOP_ADDRESS);
         map.put("ak",AK);
+        map.put("output","json");
 
         //调用百度地图API
         String shopCoordinate = HttpClientUtil.doGet("https://api.map.baidu.com/geocoding/v3/", map);
         JSONObject jsonObject = JSON.parseObject(shopCoordinate);
+
         String status = jsonObject.getString("status");
-        if("0".equals(status)){
+        if(!"0".equals(status)){
             throw new OrderBusinessException("商户地址解析失败，请检查商户地址");
         }
 
@@ -171,13 +173,13 @@ public class OrderServiceImpl implements OrderService {
         //店铺经纬度坐标
         String shopLngLat = lat + "," + lng;
 
-        //将收获地址位置信息转为经纬度值
+        //将收货地址位置信息转为经纬度值
         map.put("address",address);
         //调用百度地图API
         String userCoordinate = HttpClientUtil.doGet("https://api.map.baidu.com/geocoding/v3/", map);
-        jsonObject = JSON.parseObject(shopCoordinate);
+        jsonObject = JSON.parseObject(userCoordinate);
         status = jsonObject.getString("status");
-        if("0".equals(status)){
+        if(!"0".equals(status)){
             throw new OrderBusinessException("用户地址解析失败，请检查用户地址");
         }
         location = jsonObject.getJSONObject("result").getJSONObject("location");
@@ -197,7 +199,7 @@ public class OrderServiceImpl implements OrderService {
             throw new OrderBusinessException(resJson.getString("message"));
         }
         //数据解析
-        JSONObject result = jsonObject.getJSONObject("result");
+        JSONObject result = resJson.getJSONObject("result");
         JSONArray jsonArray = (JSONArray) result.get("routes");
         Integer distance = (Integer) ((JSONObject) jsonArray.get(0)).get("distance");
 
