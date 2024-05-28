@@ -1,17 +1,30 @@
 package com.sky.service.impl;
 
+import com.aliyuncs.http.HttpResponse;
 import com.sky.dto.GoodsSalesDTO;
 import com.sky.entity.Orders;
 import com.sky.mapper.OrderMapper;
 import com.sky.mapper.UserMapper;
 import com.sky.service.ReportService;
+import com.sky.service.WorkspaceService;
 import com.sky.vo.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xslf.usermodel.XSLFSheet;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.StreamUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -25,6 +38,8 @@ public class ReportServiceImpl implements ReportService {
     private OrderMapper orderMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private WorkspaceService workspaceService;
 
     /**
      * 营业额统计
@@ -196,6 +211,74 @@ public class ReportServiceImpl implements ReportService {
                 .nameList(StringUtils.join(nameList,","))
                 .numberList(StringUtils.join(numberList,","))
                 .build();
+    }
+
+    /**
+     * 运营数据Excel导出
+     */
+    @Override
+    public void export(HttpServletResponse resp) {
+        //实际开发中应该有设计好的导入模板，后端实际上只需要向这个模板文件填充数据就可以了
+        //模板文件在resources/template 中
+
+        //1.查询数据库，获取营业数据，最近30日的数据
+        //查询概览数据
+        LocalDate endDate = LocalDate.now().minusDays(1);
+        LocalDate beginDate = LocalDate.now().minusDays(30);
+        LocalDateTime endTime = LocalDateTime.of(endDate,LocalTime.MAX);
+        LocalDateTime beginTime = LocalDateTime.of(beginDate,LocalTime.MIN);
+        BusinessDataVO businessData = workspaceService.getBusinessData(beginTime, endTime);
+
+        //2.通过POI将数据导出到Excel
+        InputStream in = this.getClass().getClassLoader().getResourceAsStream("template/运营数据报表模板.xlsx");
+        if(in == null){
+            return;
+        }
+        //基于模板文件创建一个新的Excel文件
+        try {
+            XSSFWorkbook excel = new XSSFWorkbook(in);
+            //填充数据
+            XSSFSheet sheet = excel.getSheet("Sheet1");
+            sheet.getRow(1).getCell(1).setCellValue("时间: " + beginDate + "至 " + endDate);
+
+            //获得第4行
+            XSSFRow row = sheet.getRow(3);
+            row.getCell(2).setCellValue(businessData.getTurnover());
+            row.getCell(4).setCellValue(businessData.getOrderCompletionRate());
+            row.getCell(6).setCellValue(businessData.getNewUsers());
+            //获取第5行
+            row = sheet.getRow(4);
+            row.getCell(2).setCellValue(businessData.getValidOrderCount());
+            row.getCell(4).setCellValue(businessData.getUnitPrice());
+
+            //填充明细数据
+            for (int i = 0;i < 30;i++){
+                //查询订单信息
+                LocalDate date = beginDate.plusDays(i);
+                BusinessDataVO data = workspaceService.getBusinessData(LocalDateTime.of(date, LocalTime.MIN), LocalDateTime.of(date, LocalTime.MAX));
+
+                row = sheet.getRow(7 + i);
+                row.getCell(1).setCellValue(date.toString());
+                row.getCell(2).setCellValue(data.getTurnover());
+                row.getCell(3).setCellValue(data.getValidOrderCount());
+                row.getCell(4).setCellValue(data.getOrderCompletionRate());
+                row.getCell(5).setCellValue(data.getUnitPrice());
+                row.getCell(6).setCellValue(data.getNewUsers());
+            }
+
+            //通过输出流将Excel文件下载到客户端浏览器
+            resp.setContentType("multipart/form-data");
+            resp.setHeader("Content-Disposition","attachment;fileName=" + "运营数据报表.xlsx");
+            ServletOutputStream out = resp.getOutputStream();
+            excel.write(out);
+
+            out.close();
+            excel.close();
+            in.close();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
     }
 
 

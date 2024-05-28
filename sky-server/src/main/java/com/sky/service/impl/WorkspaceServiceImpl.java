@@ -51,9 +51,9 @@ public class WorkspaceServiceImpl implements WorkspaceService {
          * 新增用户：当日新增用户的数量
          */
 
-        Map<String,Object> map = new HashMap();
-        map.put("begin",begin);
-        map.put("end",end);
+        Map<String,Object> map = new HashMap<>();
+        map.put("beginTime",begin);
+        map.put("endTime",end);
 
         //查询总订单数
         Integer totalOrderCount = orderMapper.selectOrderCountByMap(map);
@@ -96,7 +96,7 @@ public class WorkspaceServiceImpl implements WorkspaceService {
      */
     public OrderOverViewVO getOrderOverView() {
         Map<String,Object> map = new HashMap<>();
-        map.put("begin", LocalDateTime.now().with(LocalTime.MIN));
+        map.put("beginTime", LocalDateTime.now().with(LocalTime.MIN));
         map.put("status", Orders.TO_BE_CONFIRMED);
 
         //待接单
