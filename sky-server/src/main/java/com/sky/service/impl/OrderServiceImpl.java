@@ -1,6 +1,7 @@
 package com.sky.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -14,6 +15,7 @@ import com.sky.exception.ShoppingCartBusinessException;
 import com.sky.mapper.*;
 import com.sky.result.PageResult;
 import com.sky.service.OrderService;
+import com.sky.utils.HttpClientUtil;
 import com.sky.utils.UUIDUtil;
 import com.sky.utils.WeChatPayUtil;
 import com.sky.vo.OrderPaymentVO;
@@ -24,6 +26,7 @@ import com.sky.websocket.WebSocketServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,6 +62,12 @@ public class OrderServiceImpl implements OrderService {
     //用来跳过微信支付
     private Orders orders;
 
+    //百度地图api必须参数
+    @Value("${sky.shop.address}")
+    private static String SHOP_ADDRESS;
+    @Value("${sky.shop.ak}")
+    private static String AK;
+
     /**
      * 用户下单
      * @param ordersSubmitDTO
@@ -83,6 +92,8 @@ public class OrderServiceImpl implements OrderService {
             //购物车数据为空，抛出异常
             throw new ShoppingCartBusinessException(MessageConstant.SHOPPING_CART_IS_NULL);
         }
+        //判断地址是否超出配送范围
+        checkOutOfRange(addressBook.getProvinceName() + addressBook.getCityName() + addressBook.getDistrictName() + addressBook.getDetail());
 
         //向订单表中插入一条数据
         //封装实体类
@@ -132,6 +143,67 @@ public class OrderServiceImpl implements OrderService {
                 .build();
 
         return orderSubmitVO;
+    }
+
+    /**
+     * 判断地址是否超出配送范围
+     * @param address
+     */
+    private void checkOutOfRange(String address){
+        //将商家的位置信息转化为经纬度值
+        //封装查询map
+        Map<String,String> map = new HashMap<>();
+        map.put("address",SHOP_ADDRESS);
+        map.put("ak",AK);
+
+        //调用百度地图API
+        String shopCoordinate = HttpClientUtil.doGet("https://api.map.baidu.com/geocoding/v3/", map);
+        JSONObject jsonObject = JSON.parseObject(shopCoordinate);
+        String status = jsonObject.getString("status");
+        if("0".equals(status)){
+            throw new OrderBusinessException("商户地址解析失败，请检查商户地址");
+        }
+
+        //数据解析
+        JSONObject location = jsonObject.getJSONObject("result").getJSONObject("location");
+        String lat = location.getString("lat");//经度值
+        String lng = location.getString("lng");//纬度值
+        //店铺经纬度坐标
+        String shopLngLat = lat + "," + lng;
+
+        //将收获地址位置信息转为经纬度值
+        map.put("address",address);
+        //调用百度地图API
+        String userCoordinate = HttpClientUtil.doGet("https://api.map.baidu.com/geocoding/v3/", map);
+        jsonObject = JSON.parseObject(shopCoordinate);
+        status = jsonObject.getString("status");
+        if("0".equals(status)){
+            throw new OrderBusinessException("用户地址解析失败，请检查用户地址");
+        }
+        location = jsonObject.getJSONObject("result").getJSONObject("location");
+        String userLngLat = location.getString("lat") + "," + location.getString("lng");
+
+        //路线规划
+        //封装map
+        Map<String,String> directMap = new HashMap<>();
+        directMap.put("ak",AK);
+        directMap.put("origin",shopLngLat);
+        directMap.put("destination",userLngLat);
+        directMap.put("riding_type","1");
+        //调用百度地图api
+        String resJsonStr = HttpClientUtil.doGet("https://api.map.baidu.com/directionlite/v1/riding", directMap);
+        JSONObject resJson = JSON.parseObject(resJsonStr);
+        if(!"0".equals(resJson.getString("status"))){
+            throw new OrderBusinessException(resJson.getString("message"));
+        }
+        //数据解析
+        JSONObject result = jsonObject.getJSONObject("result");
+        JSONArray jsonArray = (JSONArray) result.get("routes");
+        Integer distance = (Integer) ((JSONObject) jsonArray.get(0)).get("distance");
+
+        if(distance > 5000){
+            throw new OrderBusinessException("距离过远无法配送");
+        }
     }
 
     /**
