@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/admin/report")
-@Api("数据统计相关接口")
+@Api(tags = "数据统计相关接口")
 @Slf4j
 public class ReportController {
 
