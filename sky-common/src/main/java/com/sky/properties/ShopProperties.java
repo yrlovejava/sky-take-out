@@ -13,4 +13,9 @@ public class ShopProperties {
      * 商家的地址
      */
     private String address;
+
+    /**
+     * 百度地图ak
+     */
+    private String ak;
 }

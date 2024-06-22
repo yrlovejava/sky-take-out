@@ -27,13 +27,14 @@ mybatis:
 
 #日志打印级别
 logging:
-  level:
-    com:
-      sky:
-        mapper: debug
-        service: info
-        controller: info
-
+  config: classpath:logback-spring.xml
+# level:
+  #   com:
+  #     sky:
+  #       mapper: debug
+  #       service: info
+  #       controller: info
+#
 sky:
   jwt:
     # 设置jwt签名加密时使用的秘钥

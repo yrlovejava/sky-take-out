@@ -1,0 +1,267 @@
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== Starting HttpClientTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 47080 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== Starting HttpClientTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 47080 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.sky.test.SpringDataRedisTest], using SpringBootContextLoader
+2024-05-28 === [main] === INFO  === o.s.test.context.support.AbstractContextLoader ==== Could not detect default resource locations for test class [com.sky.test.SpringDataRedisTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-05-28 === [main] === INFO  === o.s.t.c.support.AnnotationConfigContextLoaderUtils ==== Could not detect default configuration classes for test class [com.sky.test.SpringDataRedisTest]: SpringDataRedisTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Found @SpringBootConfiguration com.sky.SkyApplication for test class com.sky.test.SpringDataRedisTest
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@452a32f2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2db75e32, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1f2d0ca2, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e353e1d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a1c308b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@d4dbb34, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7af2ee23, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5d10e2b6, org.springframework.test.context.event.EventPublishingTestExecutionListener@267309f7, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@46878216, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2b69ff13, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7136ad9a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4fb42efa, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@35599228, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@51ac72f7]
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 47080 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 47080 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 47080 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Neither @ContextConfiguration nor @ContextHierarchy found for test class [MainTest], using SpringBootContextLoader
+2024-05-28 === [main] === INFO  === o.s.test.context.support.AbstractContextLoader ==== Could not detect default resource locations for test class [MainTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-05-28 === [main] === INFO  === o.s.t.c.support.AnnotationConfigContextLoaderUtils ==== Could not detect default configuration classes for test class [MainTest]: MainTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== Starting HttpClientTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59232 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== Starting HttpClientTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59232 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.sky.test.SpringDataRedisTest], using SpringBootContextLoader
+2024-05-28 === [main] === INFO  === o.s.test.context.support.AbstractContextLoader ==== Could not detect default resource locations for test class [com.sky.test.SpringDataRedisTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-05-28 === [main] === INFO  === o.s.t.c.support.AnnotationConfigContextLoaderUtils ==== Could not detect default configuration classes for test class [com.sky.test.SpringDataRedisTest]: SpringDataRedisTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Found @SpringBootConfiguration com.sky.SkyApplication for test class com.sky.test.SpringDataRedisTest
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@44cab872, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@452a32f2, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2db75e32, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1f2d0ca2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@e353e1d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1a1c308b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@d4dbb34, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7af2ee23, org.springframework.test.context.event.EventPublishingTestExecutionListener@5d10e2b6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@267309f7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@46878216, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2b69ff13, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7136ad9a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4fb42efa, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@35599228]
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59232 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59232 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59232 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Neither @ContextConfiguration nor @ContextHierarchy found for test class [MainTest], using SpringBootContextLoader
+2024-05-28 === [main] === INFO  === o.s.test.context.support.AbstractContextLoader ==== Could not detect default resource locations for test class [MainTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-05-28 === [main] === INFO  === o.s.t.c.support.AnnotationConfigContextLoaderUtils ==== Could not detect default configuration classes for test class [MainTest]: MainTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== Starting HttpClientTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59864 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-1} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== Starting HttpClientTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59864 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.HttpClientTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-2} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.sky.test.SpringDataRedisTest], using SpringBootContextLoader
+2024-05-28 === [main] === INFO  === o.s.test.context.support.AbstractContextLoader ==== Could not detect default resource locations for test class [com.sky.test.SpringDataRedisTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-05-28 === [main] === INFO  === o.s.t.c.support.AnnotationConfigContextLoaderUtils ==== Could not detect default configuration classes for test class [com.sky.test.SpringDataRedisTest]: SpringDataRedisTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Found @SpringBootConfiguration com.sky.SkyApplication for test class com.sky.test.SpringDataRedisTest
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2db75e32, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1f2d0ca2, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@e353e1d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1a1c308b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@d4dbb34, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7af2ee23, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5d10e2b6, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@267309f7, org.springframework.test.context.event.EventPublishingTestExecutionListener@46878216, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2b69ff13, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7136ad9a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4fb42efa, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@35599228, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@51ac72f7, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@15324f25]
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59864 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-3} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59864 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-4} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== Starting SpringDataRedisTest using Java 21.0.2 on LAPTOP-BBJOTBEQ with PID 59864 (started by 14780 in C:\CangQiong\sky-take-out\sky-server)
+2024-05-28 === [main] === INFO  === com.sky.test.SpringDataRedisTest ==== The following 1 profile is active: "pro"
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-28 === [main] === INFO  === o.s.d.r.config.RepositoryConfigurationDelegate ==== Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2024-05-28 === [main] === INFO  === c.a.d.s.b.a.DruidDataSourceAutoConfigure ==== Init DruidDataSource
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} inited
+2024-05-28 === [main] === INFO  === com.sky.config.OssConfiguration ==== 开始创建阿里云文件上传工具类对象,AliOssProperties(endpoint=oss-cn-chengdu.aliyuncs.com, accessKeyId=LTAI5t9wHCiGw2w59NbqPARz, accessKeySecret=qpMGsyvZvq4FhzDXGpTpYwTfgksM63, bucketName=yr-sky-take-out)
+2024-05-28 === [main] === INFO  === com.sky.config.RedisConfiguration ==== 开始创建redis模板对象....
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 开始注册自定义拦截器...
+2024-05-28 === [main] === INFO  === com.sky.config.WebMvcConfiguration ==== 扩展消息转换器...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} closing ...
+2024-05-28 === [main] === INFO  === com.alibaba.druid.pool.DruidDataSource ==== {dataSource-5} closed
+2024-05-28 === [main] === INFO  === o.s.b.a.l.ConditionEvaluationReportLoggingListener ==== 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-28 === [main] === INFO  === o.s.b.t.context.SpringBootTestContextBootstrapper ==== Neither @ContextConfiguration nor @ContextHierarchy found for test class [MainTest], using SpringBootContextLoader
+2024-05-28 === [main] === INFO  === o.s.test.context.support.AbstractContextLoader ==== Could not detect default resource locations for test class [MainTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-05-28 === [main] === INFO  === o.s.t.c.support.AnnotationConfigContextLoaderUtils ==== Could not detect default configuration classes for test class [MainTest]: MainTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
